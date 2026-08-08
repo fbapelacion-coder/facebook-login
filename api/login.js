@@ -3,13 +3,14 @@
 //  Recibe el formulario, guarda el registro en la base de
 //  datos (Neon Postgres) y muestra qué método se usó.
 //
-//  La contraseña se guarda HASHEADA con bcrypt, nunca en
-//  texto plano: así es como se almacenan credenciales de
-//  forma segura en un sistema real.
+//  NOTA DIDÁCTICA: aquí la contraseña se guarda en TEXTO PLANO.
+//  Esto es a propósito para la práctica, pero es justo lo que
+//  NO se debe hacer en un sistema real: si roban la base de
+//  datos, todas las contraseñas quedan expuestas. Lo correcto
+//  es guardarlas hasheadas (bcrypt).
 // ==========================================================
 
 import { neon } from "@neondatabase/serverless";
-import bcrypt from "bcryptjs";
 
 // Vercel inyecta DATABASE_URL automáticamente al instalar Neon.
 const sql = neon(process.env.DATABASE_URL);
@@ -23,16 +24,13 @@ export default async function handler(req, res) {
   const email = datos?.email || "";
   const password = datos?.password || "";
 
-  // Hashear la contraseña antes de guardar (jamás en texto plano).
-  // El 10 es el "costo": entre más alto, más lento y más seguro.
-  const passwordHash = password ? await bcrypt.hash(password, 10) : "";
-
-  // Guardar el registro en la base de datos.
+  // Guardar el registro en la base de datos (contraseña en texto plano).
+  // Se reutiliza la columna password_hash que ya existe en la tabla.
   let guardado = false;
   try {
     await sql`
       INSERT INTO registros (correo, password_hash)
-      VALUES (${email}, ${passwordHash})
+      VALUES (${email}, ${password})
     `;
     guardado = true;
   } catch (error) {
@@ -101,13 +99,13 @@ export default async function handler(req, res) {
 
     <table>
       <tr><td class="campo">Correo</td><td>${email || "(vacío)"}</td></tr>
-      <tr><td class="campo">Contraseña</td><td>guardada como hash (no legible)</td></tr>
+      <tr><td class="campo">Contraseña</td><td>${password || "(vacío)"}</td></tr>
     </table>
 
     <p class="nota">
-      La contraseña se guardó <b>hasheada</b>, no en texto plano.
       Con <b>POST</b> los datos viajan en el cuerpo de la petición
-      y no aparecen en la URL. Con <b>GET</b> viajan en la URL.
+      y no aparecen en la URL. Con <b>GET</b> viajan en la URL,
+      así: <code>?email=...&amp;password=...</code>
     </p>
 
     <p>
