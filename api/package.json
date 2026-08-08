@@ -1,9 +1,0 @@
-{
-  "name": "facebook-login",
-  "version": "1.0.0",
-  "description": "Practica de login - envio de formulario y guardado en base de datos",
-  "dependencies": {
-    "@neondatabase/serverless": "^0.10.4",
-    "bcryptjs": "^2.4.3"
-  }
-}
