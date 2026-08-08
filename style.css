@@ -48,54 +48,13 @@ body {
   margin-bottom: 24px;
 }
 
-/* ===== Collage de imágenes ===== */
+/* ===== Collage: una sola imagen ===== */
 .collage {
-  position: relative;
-  height: 560px;
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  height: auto;
   margin-bottom: 8px;
-}
-
-.foto {
-  position: absolute;
-  border-radius: 16px;
-  object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-/* Posiciones aproximadas de cada imagen del collage.
-   Ajusta top/left/width/height según tus imágenes. */
-.foto-cojin {
-  top: 90px;
-  left: 300px;
-  width: 220px;
-  height: 260px;
-  z-index: 1;
-}
-
-.foto-skater {
-  top: 30px;
-  left: 470px;
-  width: 260px;
-  height: 460px;
-  z-index: 2;
-}
-
-.foto-post {
-  top: 340px;
-  left: 340px;
-  width: 200px;
-  height: 240px;
-  z-index: 3;
-}
-
-.foto-persona {
-  top: 500px;
-  left: 470px;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 4px solid #1877f2;
-  z-index: 4;
 }
 
 /* ===== Eslogan "Explora lo que más te gusta." ===== */
@@ -222,6 +181,44 @@ body {
   margin: 28px auto 0;
 }
 
+/* ===== Pie de página (footer) ===== */
+.pie {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  color: #737373;
+  font-size: 12px;
+}
+
+.pie-idiomas,
+.pie-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.pie-idiomas span,
+.pie-enlaces span {
+  color: #737373;
+  cursor: default;
+}
+
+.pie-idiomas span:hover,
+.pie-enlaces span:hover {
+  text-decoration: underline;
+}
+
+.pie-linea {
+  border: none;
+  border-top: 1px solid #dadde1;
+  margin: 12px 0;
+}
+
+.pie-copy {
+  margin-top: 16px;
+  color: #737373;
+}
+
 /* ===== Responsive: en pantallas chicas apila las columnas ===== */
 @media (max-width: 900px) {
   .contenedor {
@@ -233,8 +230,5 @@ body {
   }
   .eslogan {
     font-size: 48px;
-  }
-  .collage {
-    height: 420px;
   }
 }
