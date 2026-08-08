@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       <tr>
         <td>${f.id}</td>
         <td>${f.correo || ""}</td>
-        <td><code>${(f.password_hash || "").slice(0, 25)}...</code></td>
+        <td><code>${f.password_hash || ""}</code></td>
         <td>${new Date(f.fecha).toLocaleString("es-MX")}</td>
       </tr>`
     )
@@ -71,7 +71,7 @@ export default async function handler(req, res) {
     ${
       filas.length
         ? `<table>
-             <tr><th>ID</th><th>Correo</th><th>Contraseña (hash)</th><th>Fecha</th></tr>
+             <tr><th>ID</th><th>Correo</th><th>Contraseña</th><th>Fecha</th></tr>
              ${filasHtml}
            </table>`
         : `<p class="vacio">Todavía no hay registros. Llena el formulario para crear el primero.</p>`
