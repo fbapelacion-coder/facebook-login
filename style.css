@@ -44,7 +44,7 @@ body {
 /* ===== Logo de Facebook ===== */
 .logo {
   width: 68px;
-  height: 68px;
+  height: auto;
   margin-bottom: 24px;
 }
 
