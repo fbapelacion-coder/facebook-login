@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión en Facebook</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="contenedor">
+
+    <!-- ============ COLUMNA IZQUIERDA ============ -->
+    <section class="izquierda">
+      <!-- Logo de Facebook. Reemplaza el src por tu imagen -->
+      <img class="logo" src="img/logo-facebook.png" alt="Facebook" />
+
+      <div class="collage">
+        <!-- Aquí van las 4-5 imágenes del collage.
+             Reemplaza cada src por las tuyas. Las clases controlan
+             posición y tamaño para que quede como el original. -->
+        <img class="foto foto-cojin"    src="img/cojin.png"    alt="" />
+        <img class="foto foto-skater"   src="img/skater.png"   alt="" />
+        <img class="foto foto-post"     src="img/post.png"     alt="" />
+        <img class="foto foto-persona"  src="img/persona.png"  alt="" />
+      </div>
+
+      <h1 class="eslogan">
+        Explora<br />
+        lo que<br />
+        <span class="azul">más te</span><br />
+        <span class="azul">gusta</span>.
+      </h1>
+    </section>
+
+    <!-- ============ COLUMNA DERECHA ============ -->
+    <section class="derecha">
+      <div class="tarjeta-login">
+        <h2 class="titulo-login">Iniciar sesión en Facebook</h2>
+
+        <!--
+          Cambia method="POST" por method="GET" para demostrar
+          la diferencia en clase:
+            - POST  -> los datos viajan en el cuerpo (no se ven en la URL)
+            - GET   -> los datos viajan en la URL (?email=...&password=...)
+        -->
+        <form class="formulario" action="/api/login" method="POST">
+          <input
+            type="text"
+            name="email"
+            class="campo"
+            placeholder="Correo electrónico o número de celular"
+            autocomplete="off"
+          />
+          <input
+            type="password"
+            name="password"
+            class="campo"
+            placeholder="Contraseña"
+            autocomplete="off"
+          />
+
+          <button type="submit" class="btn-iniciar">Iniciar sesión</button>
+        </form>
+
+        <a href="#" class="olvidaste">¿Olvidaste tu contraseña?</a>
+
+        <hr class="divisor" />
+
+        <div class="contenedor-crear">
+          <button type="button" class="btn-crear">Crear cuenta nueva</button>
+        </div>
+
+        <!-- Logo de Meta. Reemplaza el src por tu imagen -->
+        <img class="logo-meta" src="img/meta.png" alt="Meta" />
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

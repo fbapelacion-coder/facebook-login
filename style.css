@@ -1,0 +1,240 @@
+/* ===== Reset básico ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Tipografía: misma stack que usa Facebook =====
+   Facebook usa su fuente propia (Optimistic/Segoe) y como respaldo
+   Helvetica y Arial. Esta pila se ve prácticamente igual en Windows,
+   Mac y Linux sin tener que descargar ninguna fuente. */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  color: #1c1e21;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Layout de dos columnas ===== */
+.contenedor {
+  display: flex;
+  min-height: 100vh;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Columna izquierda */
+.izquierda {
+  flex: 1;
+  padding: 40px 24px 40px 60px;
+  position: relative;
+}
+
+/* Columna derecha, con la línea vertical separadora */
+.derecha {
+  flex: 1;
+  padding: 40px 60px;
+  border-left: 1px solid #dddfe2;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== Logo de Facebook ===== */
+.logo {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 24px;
+}
+
+/* ===== Collage de imágenes ===== */
+.collage {
+  position: relative;
+  height: 560px;
+  margin-bottom: 8px;
+}
+
+.foto {
+  position: absolute;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Posiciones aproximadas de cada imagen del collage.
+   Ajusta top/left/width/height según tus imágenes. */
+.foto-cojin {
+  top: 90px;
+  left: 300px;
+  width: 220px;
+  height: 260px;
+  z-index: 1;
+}
+
+.foto-skater {
+  top: 30px;
+  left: 470px;
+  width: 260px;
+  height: 460px;
+  z-index: 2;
+}
+
+.foto-post {
+  top: 340px;
+  left: 340px;
+  width: 200px;
+  height: 240px;
+  z-index: 3;
+}
+
+.foto-persona {
+  top: 500px;
+  left: 470px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 4px solid #1877f2;
+  z-index: 4;
+}
+
+/* ===== Eslogan "Explora lo que más te gusta." ===== */
+.eslogan {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -1px;
+  color: #000000;
+}
+
+.eslogan .azul {
+  color: #1877f2;
+}
+
+/* ===== Tarjeta de login (columna derecha) ===== */
+.tarjeta-login {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 60px;
+}
+
+.titulo-login {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1c1e21;
+  margin-bottom: 28px;
+}
+
+/* ===== Formulario ===== */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo {
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 17px;
+  border: 1px solid #ccced2;
+  border-radius: 14px;
+  outline: none;
+  color: #1c1e21;
+  font-family: inherit;
+}
+
+.campo::placeholder {
+  color: #606770;
+}
+
+.campo:focus {
+  border-color: #1877f2;
+  box-shadow: 0 0 0 2px #e7f0ff;
+}
+
+/* ===== Botón azul "Iniciar sesión" ===== */
+.btn-iniciar {
+  width: 100%;
+  padding: 16px;
+  margin-top: 8px;
+  font-size: 19px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #1877f2;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-iniciar:hover {
+  background: #166fe5;
+}
+
+/* ===== Enlace "¿Olvidaste tu contraseña?" ===== */
+.olvidaste {
+  display: block;
+  text-align: center;
+  margin: 22px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1c1e21;
+  text-decoration: none;
+}
+
+.olvidaste:hover {
+  text-decoration: underline;
+}
+
+/* ===== Divisor ===== */
+.divisor {
+  border: none;
+  border-top: 1px solid #dadde1;
+  margin: 20px 0;
+}
+
+/* ===== Botón "Crear cuenta nueva" ===== */
+.contenedor-crear {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-crear {
+  padding: 15px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1877f2;
+  background: #ffffff;
+  border: 1px solid #1877f2;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-crear:hover {
+  background: #f5f9ff;
+}
+
+/* ===== Logo de Meta ===== */
+.logo-meta {
+  display: block;
+  height: 22px;
+  margin: 28px auto 0;
+}
+
+/* ===== Responsive: en pantallas chicas apila las columnas ===== */
+@media (max-width: 900px) {
+  .contenedor {
+    flex-direction: column;
+  }
+  .derecha {
+    border-left: none;
+    border-top: 1px solid #dddfe2;
+  }
+  .eslogan {
+    font-size: 48px;
+  }
+  .collage {
+    height: 420px;
+  }
+}
